@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>502</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/51/ae/a3/51aea3393b8234a1e69d8713a0a58bc3.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 750px;
+            max-width: 90%;
+            height: auto;
+            border: 2px solid #0000ff;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.7);
+        }
+
+        /* النص الذي يظهر ويختفي */
+        .fade-text {
+            margin-top: 30px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #0000ff;
+            text-shadow: 0 0 8px #0000ff, 0 0 15px #0000ff;
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #0000ff;
+            text-shadow: 0 0 5px #0000ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="https://www.aljazeera.net/wp-content/uploads/2014/12/28c9f2d9-ac2f-483e-8483-c71ff584863e.jpeg?resize=686%2C513&quality=80" alt="Image">
+    </div>
+
+    <div class="fade-text" id="movingText">
+        يابن شرموطه لاتسوي فيه انا اداري مره ثانيه وتسجن خالد يابن قحبه
+    </div>
+
+    <div class="text">
+        ايي واحد فتح فايف قارد تعال على زبي ي ابن قحبه يالله انت وحمايه زق حقتكم
+    </div>
+
+    <script>
+        const textElement = document.getElementById('movingText');
+        let visible = true;
+
+        setInterval(() => {
+            visible = !visible;
+            if (visible) {
+                textElement.style.opacity = '1';
+            } else {
+                textElement.style.opacity = '0';
+            }
+        }, 5000); // 5 ثواني
+    </script>
+</body>
+</html>
