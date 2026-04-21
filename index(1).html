@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>ماش ماش</title>
+
+<style>
+/* شفافية كاملة */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    
+    background: rgba(0,0,0,0) !important; /* مهم */
+    overflow: hidden;
+}
+
+/* تغطية الشاشة بالكامل */
+.container {
+    position: fixed;
+    inset: 0;
+    background: transparent !important;
+}
+
+/* النص */
+.text {
+    position: absolute;
+    color: white;
+    font-family: Arial Black, sans-serif;
+    font-weight: 900;
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+
+    user-select: none;
+    pointer-events: none;
+
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+/* حركة خفيفة */
+@keyframes float {
+    from { transform: translate(0, 0); }
+    to { transform: translate(6px, 10px); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container"></div>
+
+<script>
+const container = document.getElementById("container");
+
+// عدد الصفوف والأعمدة (تحكم بالكثافة)
+const rows = 12;
+const cols = 8;
+
+function createOverlay() {
+    container.innerHTML = '';
+
+    const cellWidth = 100 / cols;
+    const cellHeight = 100 / rows;
+
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+
+            const text = document.createElement("div");
+            text.className = "text";
+            text.innerText = "وش رايك تروح تنام؟";
+
+            // موقع داخل الخلية + عشوائية بسيطة
+            const x = (c * cellWidth) + (Math.random() * (cellWidth * 0.6));
+            const y = (r * cellHeight) + (Math.random() * (cellHeight * 0.6));
+
+            text.style.left = x + "vw";
+            text.style.top = y + "vh";
+
+            // حجم عشوائي
+            const size = Math.floor(Math.random() * 25) + 25;
+            text.style.fontSize = size + "px";
+
+            // شفافية
+            text.style.opacity = Math.random() * 0.5 + 0.5;
+
+            // تأخير الحركة
+            text.style.animationDelay = (Math.random() * 4) + "s";
+
+            container.appendChild(text);
+        }
+    }
+}
+
+// تشغيل
+createOverlay();
+
+// يعيد التوزيع إذا تغير حجم الشاشة
+window.addEventListener("resize", createOverlay);
+</script>
+
+</body>
+</html>
